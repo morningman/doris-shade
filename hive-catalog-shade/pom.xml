@@ -20,7 +20,7 @@ under the License.
     <parent>
         <groupId>org.apache.doris</groupId>
         <artifactId>doris-shade</artifactId>
-        <version>1.0.2</version>
+        <version>1.0.3-SNAPSHOT</version>
     </parent>
 
     <artifactId>hive-catalog-shade</artifactId>
@@ -330,6 +330,11 @@ under the License.
             <version>${hive.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.apache.hive</groupId>
+            <artifactId>hive-jdbc</artifactId>
+            <version>${hive.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.apache.paimon</groupId>
             <artifactId>paimon-hive-connector-3.1</artifactId>
             <version>${paimon-hive-metastore.version}</version>
@@ -448,8 +453,12 @@ under the License.
                                     <shadedPattern>shade.doris.hive.com.google.flatbuffers</shadedPattern>
                                 </relocation>
                                 <relocation>
-                                        <pattern>org.apache.httpcomponents</pattern>
-                                        <shadedPattern>shade.doris.hive.org.apache.httpcomponents</shadedPattern>
+                                    <pattern>org.apache.httpcomponents</pattern>
+                                    <shadedPattern>shade.doris.hive.org.apache.httpcomponents</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>com.lmax.disruptor</pattern>
+                                    <shadedPattern>shade.doris.hive.com.lmax.disruptor</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>
